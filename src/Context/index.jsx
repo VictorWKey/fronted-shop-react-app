@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-undef */
+// eslint-disable-next-line no-unused-vars
 import React, { createContext, useState, useEffect } from 'react'
 
 export const ShopContext = createContext();
@@ -47,7 +48,7 @@ export const ShopProvider = ({children}) => {
   const [searchByCategory, setSearchByCategory] = useState('');
 
   // Filtered Products by title
-  const [filteredItems, setFilteredItems] = useState([])
+  const [filteredItems, setFilteredItems] = useState([]);
 
   const filteredItemsByTitle = (items, itemTitleSearch) => {
     return items?.filter(item => item.title.toLowerCase().includes(itemTitleSearch.toLowerCase()))
@@ -73,20 +74,24 @@ export const ShopProvider = ({children}) => {
 
   useEffect(() => {
     console.log(searchByTitle)
-    if ((searchByTitle.length > 0 || searchByTitle) && (searchByCategory?.length === 0 || !searchByCategory)){
+    if ((searchByTitle?.length > 0 || searchByTitle) && (searchByCategory?.length === 0 || !searchByCategory)){
       setFilteredItems(filterBy('BY_TITLE', items, searchByTitle, searchByCategory))
     }
 
-    if ((searchByCategory.length > 0 || searchByCategory) && (searchByTitle.length === 0 || !searchByTitle)){
+    if ((searchByCategory?.length > 0 || searchByCategory) && (searchByTitle?.length === 0 || !searchByTitle)){
       setFilteredItems(filterBy('BY_CATEGORY', items, searchByTitle, searchByCategory))
     }
 
-    if((searchByTitle.length > 0 || searchByTitle) && (searchByCategory.length > 0 || searchByCategory)){
+    if((searchByTitle?.length > 0 || searchByTitle) && (searchByCategory?.length > 0 || searchByCategory)){
       setFilteredItems(filterBy('BY_CATEGORY_AND_TITLE', items, searchByTitle, searchByCategory))
     }
 
-    if((searchByCategory.length === 0 || !searchByCategory) && (searchByTitle.length === 0 || !searchByTitle)){
+    if((searchByCategory?.length === 0 || !searchByCategory) && (searchByTitle?.length === 0 || !searchByTitle)){
       setFilteredItems(items)
+    }
+
+    return () => {
+      setSearchByTitle(null)
     }
 
   }, [items, searchByTitle, searchByCategory])
