@@ -3,11 +3,19 @@ import Layout from '../../Components/Layout'
 import { ShopContext } from '../../Context'
 import OrdersCard from '../../Components/OrdersCard';
 import { Link } from 'react-router-dom';
+import { usePageTitle, usePageMeta } from '../../hooks/usePageTitle';
 
 function MyOrders() {
   const {
     order
   } = useContext(ShopContext);
+
+  // Set page title and meta
+  usePageTitle('My Orders');
+  usePageMeta(
+    'View your order history and track your purchases. Manage all your shopping orders in one place.',
+    'my orders, order history, purchase tracking, order management'
+  );
 
   return (
     <Layout>

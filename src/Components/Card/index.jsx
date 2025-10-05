@@ -7,19 +7,27 @@ import { CheckCircleIcon, PlusCircleIcon } from '@heroicons/react/24/solid'
 const AddIconButton = ({isInCart, onItemAdded}) => {
   if (isInCart) {
     return (
-      <CheckCircleIcon
-        className='absolute top-2 right-2 w-6 h-6 sm:w-7 sm:h-7 text-green-500 bg-white rounded-full shadow-md'
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-      />
+      <div className='absolute top-3 right-3 p-1.5 bg-green-50 rounded-full shadow-lg border border-green-100'>
+        <CheckCircleIcon
+          className='w-5 h-5 text-green-600'
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        />
+      </div>
     )
   } else {
     return (
-      <PlusCircleIcon
-        className='absolute top-2 right-2 w-6 h-6 sm:w-7 sm:h-7 text-blue-500 bg-white rounded-full shadow-md hover:bg-blue-50 transition-colors duration-200'
+      <button 
+        className='absolute top-3 right-3 p-1.5 bg-white rounded-full shadow-lg border border-gray-100 
+                   hover:bg-blue-50 hover:border-blue-200 hover:shadow-xl hover:scale-110
+                   transition-all duration-200 group'
         onClick={onItemAdded}
-      />
+      >
+        <PlusCircleIcon
+          className='w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors duration-200'
+        />
+      </button>
     )
   }
 }
@@ -53,32 +61,52 @@ function Card({data}) {
 
   return (
     <div
-      className='bg-white cursor-pointer w-full max-w-sm h-60 sm:h-72 md:h-64 lg:h-72 xl:h-80 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden'
+      className='card-product cursor-pointer w-full max-w-sm h-80 sm:h-96 md:h-80 lg:h-96 xl:h-[400px] group'
       onClick={() => {
         showProductDetails(data)
       }}
     >
-      <figure className='relative mb-2 w-full h-3/4 sm:h-4/5'>
-        <span className='absolute bottom-0 left-0 bg-white/80 backdrop-blur-sm rounded-lg text-black text-xs m-2 px-2 py-1 shadow-sm'>
-          {data.category}
-        </span>
-        <img 
-          className='w-full h-full object-cover rounded-t-lg' 
-          src={data.image} 
-          alt={data.title}
-          loading="lazy"
-        />
+      <figure className='relative w-full h-3/4 overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 p-4'>
+        {/* Category Tag */}
+        <div className='absolute top-3 left-3 z-10'>
+          <span className='category-tag backdrop-blur-sm'>
+            {data.category}
+          </span>
+        </div>
+        
+        {/* Product Image Container */}
+        <div className='w-full h-full flex items-center justify-center'>
+          <img 
+            className='max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-110' 
+            src={data.image} 
+            alt={data.title}
+            loading="lazy"
+          />
+        </div>
+        
+        {/* Gradient Overlay on Hover */}
+        <div className='gradient-overlay' />
+        
+        {/* Add Button */}
         <AddIconButton isInCart={isInCart} onItemAdded={addProductToCart}/>
       </figure>
-      <div className='px-3 pb-3 h-1/4 sm:h-1/5 flex flex-col justify-between'>
-        <p className='flex justify-between items-start gap-2'>
-          <span className='text-xs sm:text-sm font-light truncate flex-1 leading-tight'>
+      
+      {/* Product Info */}
+      <div className='p-4 h-1/4 flex flex-col justify-between'>
+        <div className='space-y-2 flex-1'>
+          <h3 className='product-title text-sm sm:text-base group-hover:text-blue-600 transition-colors duration-200'>
             {data.title}
-          </span>
-          <span className='text-sm sm:text-lg font-medium text-right whitespace-nowrap'>
+          </h3>
+        </div>
+        
+        <div className='flex items-center justify-between pt-2'>
+          <div className='price-display text-lg sm:text-xl'>
             ${data.price}
-          </span>
-        </p>
+          </div>
+          <div className='opacity-0 group-hover:opacity-100 transition-opacity duration-200'>
+            <span className='text-xs text-gray-500 font-medium'>View Details</span>
+          </div>
+        </div>
       </div>
     </div>
   )

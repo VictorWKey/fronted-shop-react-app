@@ -2,36 +2,126 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom responsive utilities */
+/* Modern Design System */
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   body {
-    @apply text-gray-900 bg-gray-50;
+    @apply text-gray-800 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  
+  /* Typography Scale */
+  h1 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight;
+  }
+  
+  h2 {
+    @apply text-2xl md:text-3xl font-semibold tracking-tight;
+  }
+  
+  h3 {
+    @apply text-xl md:text-2xl font-semibold;
+  }
+  
+  /* Better focus styles */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-white;
   }
 }
 
 @layer components {
-  .mobile-menu-overlay {
-    backdrop-filter: blur(4px);
+  /* Modern Glass Effect */
+  .glass-effect {
+    @apply bg-white/90 backdrop-blur-md border border-blue-100/50 shadow-xl shadow-blue-100/20;
   }
   
-  .card-hover {
-    @apply hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300;
+  /* Enhanced Card Effects */
+  .card-modern {
+    @apply bg-white border border-blue-100/70 rounded-2xl shadow-sm hover:shadow-2xl 
+           hover:shadow-blue-200/30 hover:-translate-y-2 hover:border-blue-200
+           transition-all duration-300 ease-out;
   }
   
+  .card-product {
+    @apply bg-white rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 
+           border border-blue-100/50 hover:border-indigo-200 hover:shadow-indigo-200/20
+           transition-all duration-300 ease-out overflow-hidden;
+  }
+  
+  /* Modern Buttons */
   .btn-primary {
-    @apply px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-200 font-medium;
+    @apply px-6 py-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white 
+           rounded-xl hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 
+           transition-all duration-200 font-semibold shadow-lg shadow-blue-500/25
+           hover:shadow-xl hover:shadow-blue-500/30 transform hover:-translate-y-0.5
+           focus:ring-4 focus:ring-blue-300;
   }
   
   .btn-secondary {
-    @apply px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200 font-medium;
+    @apply px-6 py-3 bg-white border-2 border-blue-200 text-blue-700 
+           rounded-xl hover:bg-blue-50 hover:border-blue-300 hover:shadow-md hover:shadow-blue-200/20
+           transition-all duration-200 font-semibold
+           focus:ring-4 focus:ring-blue-200;
+  }
+  
+  .btn-accent {
+    @apply px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white 
+           rounded-xl hover:from-purple-700 hover:to-pink-700 
+           transition-all duration-200 font-semibold shadow-lg shadow-purple-500/25
+           hover:shadow-xl hover:shadow-purple-500/30 transform hover:-translate-y-0.5
+           focus:ring-4 focus:ring-purple-300;
+  }
+  
+  /* Modern Input Styles */
+  .input-modern {
+    @apply w-full px-4 py-3 bg-white/80 border border-blue-200/70 rounded-xl
+           focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 focus:bg-white
+           transition-all duration-200 font-medium
+           hover:border-blue-300 hover:bg-white/90;
+  }
+  
+  /* Navigation Enhancements */
+  .nav-modern {
+    @apply bg-white/95 backdrop-blur-md border-b border-blue-100/50 
+           shadow-sm shadow-blue-100/20 supports-[backdrop-filter]:bg-white/80;
+  }
+  
+  /* Mobile Menu */
+  .mobile-menu-modern {
+    @apply bg-white/95 backdrop-blur-xl border-l border-blue-100 
+           shadow-2xl shadow-blue-200/20 supports-[backdrop-filter]:bg-white/90;
+  }
+  
+  /* Category Tag */
+  .category-tag {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
+           bg-blue-100 text-blue-800 border border-blue-200
+           hover:bg-blue-200 hover:text-blue-900 transition-colors duration-200;
+  }
+  
+  /* Price Display */
+  .price-display {
+    @apply text-2xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent tracking-tight;
+  }
+  
+  /* Product Title */
+  .product-title {
+    @apply font-semibold text-gray-900 line-clamp-2 leading-tight;
+  }
+  
+  /* Gradient Overlays */
+  .gradient-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-indigo-900/60 via-blue-600/20 to-transparent 
+           opacity-0 hover:opacity-100 transition-opacity duration-300;
   }
 }
 
-/* Ensure proper scrolling on mobile devices */
+/* Utility Classes */
 @layer utilities {
   .scroll-smooth {
     scroll-behavior: smooth;
@@ -39,5 +129,40 @@
   
   .touch-manipulation {
     touch-action: manipulation;
+  }
+  
+  /* Text Truncation */
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+  
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+  
+  /* Modern Shadows */
+  .shadow-soft {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .shadow-medium {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .shadow-strong {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   }
 }

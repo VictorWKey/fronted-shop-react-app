@@ -1,7 +1,15 @@
 import Layout from '../../Components/Layout';
 import { UserIcon, EnvelopeIcon, PhoneIcon, MapPinIcon } from '@heroicons/react/24/outline';
+import { usePageTitle, usePageMeta } from '../../hooks/usePageTitle';
 
 function MyAccount() {
+  // Set page title and meta
+  usePageTitle('My Account');
+  usePageMeta(
+    'Manage your account settings, personal information, and preferences. Update your profile and account details.',
+    'my account, profile settings, account management, personal information'
+  );
+
   return (
     <Layout>
       <div className='w-full max-w-2xl mx-auto'>

@@ -1,0 +1,21 @@
+{
+  "name": "Shopi - Modern Shopping Experience",
+  "short_name": "Shopi",
+  "description": "Discover amazing products in our modern online store",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#4F46E5",
+  "theme_color": "#4F46E5",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/shopping-cart.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["shopping", "business", "lifestyle"],
+  "lang": "en",
+  "dir": "ltr"
+}
