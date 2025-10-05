@@ -17,7 +17,7 @@
   
   /* Typography Scale */
   h1 {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight;
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight py-1;
   }
   
   h2 {
@@ -118,6 +118,14 @@
   .gradient-overlay {
     @apply absolute inset-0 bg-gradient-to-t from-indigo-900/60 via-blue-600/20 to-transparent 
            opacity-0 hover:opacity-100 transition-opacity duration-300;
+  }
+  
+  /* Gradient Text with proper spacing for descenders */
+  .gradient-title {
+    line-height: 1.2 !important;
+    padding-top: 0.25rem;
+    padding-bottom: 0.5rem;
+    overflow: visible !important;
   }
 }
 

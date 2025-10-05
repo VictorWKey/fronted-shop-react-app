@@ -25,7 +25,7 @@ function Home() {
       {/* Hero Section */}
       <div className='w-full flex flex-col items-center mb-12'>
         <div className='text-center mb-8'>
-          <h1 className='font-bold text-3xl sm:text-4xl lg:text-5xl mb-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent'>
+          <h1 className='gradient-title font-bold text-3xl sm:text-4xl lg:text-5xl mb-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent'>
             Discover Amazing Products
           </h1>
           <p className='text-blue-700/80 text-lg max-w-2xl mx-auto leading-relaxed'>
